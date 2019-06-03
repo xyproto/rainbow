@@ -1,4 +1,4 @@
-package lol
+package rainbow
 
 type color0 struct {
 	R, G, B uint8

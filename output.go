@@ -1,6 +1,6 @@
 // +build !windows
 
-package lol
+package rainbow
 
 import "os"
 

@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/CrowdSurge/banner"
-	lol "github.com/kris-nova/lolgopher"
+	"github.com/xyproto/rainbow"
 )
 
 func main() {
-	w := lol.NewLolWriter()
-	w.Write([]byte(banner.PrintS("lolgopher")))
+	w := rainbow.NewWriter(2, 0.1, 0)
+	w.Write([]byte(banner.PrintS("rainbow")+"\n"))
 }

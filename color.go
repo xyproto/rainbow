@@ -1,4 +1,4 @@
-package lol
+package rainbow
 
 // colorer is an interface that can be used to colorize an io.Writer. Each
 // colorer is designed to support a specific terminal color schema (256, 0, etc).

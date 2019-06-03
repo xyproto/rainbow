@@ -1,4 +1,4 @@
-package lol
+package rainbow
 
 import (
 	"fmt"
@@ -10,9 +10,9 @@ import (
 )
 
 const (
-	spread = 3.0
-	freq   = 0.1
-	seed   = 0
+	DefaultSpread = 5.0
+	DefaultFreq   = 0.1
+	seed          = 0
 )
 
 const (
@@ -21,15 +21,29 @@ const (
 	ColorMode0
 )
 
-// LolWriter writes a little lol-er.
+// Writer writes colorful output
 type Writer struct {
 	Output    io.Writer
 	ColorMode int
 	lineIdx   int
-	origin    int
+	Origin    int
+	Spread    float64
+	Freq      float64
 }
 
 var noColor = os.Getenv("TERM") == "dumb" || (!isatty.IsTerminal(os.Stdout.Fd()) && !isatty.IsCygwinTerminal(os.Stdout.Fd()))
+
+func (w *Writer) SetSpread(spread float64) {
+	w.Spread = spread
+}
+
+func (w *Writer) SetFreq(freq float64) {
+	w.Freq = freq
+}
+
+func (w *Writer) SetOrigin(origin int) {
+	w.Origin = origin
+}
 
 // writeRaw will write a lol'd s to the underlying writer.  It does no line
 // detection.
@@ -40,7 +54,7 @@ func (w *Writer) writeRaw(s string) (int, error) {
 	}
 	nWritten := 0
 	for _, r := range s {
-		c.rainbow(freq, float64(w.origin)+float64(w.lineIdx)/spread)
+		c.rainbow(w.Freq, float64(w.Origin)+float64(w.lineIdx)/w.Spread)
 		_, err := w.Output.Write(c.format())
 		if err != nil {
 			return nWritten, err
@@ -96,15 +110,15 @@ func (w *Writer) Write(p []byte) (int, error) {
 				return nWritten, err
 			}
 			nWritten += n
-			w.origin++
+			w.Origin++
 			w.lineIdx = 0
 		}
 	}
 	return nWritten, nil
 }
 
-// NewLolWriter will return a new io.Writer with a default ColorMode of 256
-func NewLolWriter() io.Writer {
+// NewWriter will return a new io.Writer with a default ColorMode of 256
+func NewWriter(spread, freq float64, origin int) io.Writer {
 	colorMode := ColorMode256
 	if noColor {
 		colorMode = ColorMode0
@@ -112,11 +126,14 @@ func NewLolWriter() io.Writer {
 	return &Writer{
 		Output:    stdout,
 		ColorMode: colorMode,
+		Origin:    origin,
+		Spread:    spread,
+		Freq:      freq,
 	}
 }
 
-// NewTruecolorLolWriter will return a new io.Writer with a default ColorMode of truecolor
-func NewTruecolorLolWriter() io.Writer {
+// NewTruecolorWriter will return a new io.Writer with a default ColorMode of truecolor
+func NewTruecolorWriter(spread, freq float64, origin int) io.Writer {
 	colorMode := ColorModeTrueColor
 	if noColor {
 		colorMode = ColorMode0
@@ -124,5 +141,8 @@ func NewTruecolorLolWriter() io.Writer {
 	return &Writer{
 		Output:    stdout,
 		ColorMode: colorMode,
+		Origin:    origin,
+		Spread:    spread,
+		Freq:      freq,
 	}
 }

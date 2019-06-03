@@ -1,22 +1,21 @@
 package main
 
 import (
-	lol "github.com/kris-nova/lolgopher"
+	"github.com/xyproto/rainbow"
 )
 
 func main() {
-	lol.Printf("Testing testing %d%d%d\n", 1, 2, 3)
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-	lol.Println("trololololololololololololololololololol")
-
+	rainbow.Printf("Testing testing %d%d%d\n", 1, 2, 3)
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
+	rainbow.Println("rainbow rainbow rainbow rainbow rainbow")
 }
