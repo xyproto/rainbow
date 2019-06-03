@@ -1,22 +1,5 @@
-# lolgopher
+# rainbow
 
-<p align="center"><img src="img/kubicorn.png" width="420"></p>
+A fork of [lolgopher](https://github.com/xyproto/rainbow) which is based on [lolcat](https://github.com/busyloop/lolcat).
 
-Rainbow Writer implementation for Golang
-
-Based on https://github.com/busyloop/lolcat.
-
-<img src="https://github.com/ashleymcnamara/gophers/blob/master/NERDY.png" width="60"> Proudly packaged with Golang [dep](https://github.com/golang/dep)
-
-## Installing
-
-```
-$ go get github.com/kris-nova/lolgopher
-```
-
-##### From Source
-
-```
-cd $GOPATH/src/github.com/kris-nova/lolgopher
-go install .
-```
+Can colorize multiline-strings in rainbow-like colors, for the terminal.
